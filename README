@@ -1,0 +1,82 @@
+NAME
+    Crypt::Polybius - implementation of the Polybius square
+
+SYNOPSIS
+       use Crypt::Polybius;
+   
+       #      1    2    3    4    5
+       # 1    A    B    C    D    E
+       # 2    F    G    H    I/J  K
+       # 3    L    M    N    O    P
+       # 4    Q    R    S    T    U
+       # 5    V    W    X    Y    Z
+       #
+       # ATTACK  ->  11 44 44 11 13 25
+       # AT      ->  11 44
+       # DAWN    ->  14 11 52 33
+   
+       my $square = Crypt::Polybius->new;
+   
+       print $square->encipher('Attack at dawn.'), "\n";
+
+DESCRIPTION
+    This module provides an implementation of the Polybius square, or Polybius
+    checkerboard. This cipher is not cryptographically strong, nor completely
+    round-trip-safe.
+
+  Constructor
+    `new(%attributes)`
+        Moose-like constructor.
+
+  Attributes
+    `square`
+        An array of arrays of letters. The default is:
+
+           [
+              [qw/ A B C D E /],
+              [qw/ F G H I K /],
+              [qw/ L M N O P /],
+              [qw/ Q R S T U /],
+              [qw/ V W X Y Z /],
+           ]
+
+    `substitutions`
+        A hashref of strings of pre-encipher substitutions to make. The
+        default is:
+
+           { "J" => "I" }
+
+        You should only use upper-case letters.
+
+  Methods
+    `encipher($str)`
+        Enciphers a string and returns the ciphertext.
+
+    `decipher($str)`
+        Deciphers a string and returns the plaintext.
+
+    `preprocess($str)`
+        Perform pre-encipher processing on a string. `encipher` calls this, so
+        you are unlikely to need to call it yourself.
+
+BUGS
+    Please report any bugs to
+    <http://rt.cpan.org/Dist/Display.html?Queue=Crypt-Polybius>.
+
+SEE ALSO
+    <http://en.wikipedia.org/wiki/Polybius_square>.
+
+AUTHOR
+    Toby Inkster <tobyink@cpan.org>.
+
+COPYRIGHT AND LICENCE
+    This software is copyright (c) 2014 by Toby Inkster.
+
+    This is free software; you can redistribute it and/or modify it under the
+    same terms as the Perl 5 programming language system itself.
+
+DISCLAIMER OF WARRANTIES
+    THIS PACKAGE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR IMPLIED
+    WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF
+    MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+

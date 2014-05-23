@@ -1,0 +1,38 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.70.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 294505f858f11dd062e9916e3f50d88210a9ef54 CONTRIBUTING
+SHA1 8c5df8b26a4660d880e679b2dd61e6e2e71213fc COPYRIGHT
+SHA1 6bd7b17d81be63d08d4efa6cb80106e72887842c CREDITS
+SHA1 b1fe52894b3a67376060adf5d6a2bf1385c1514c Changes
+SHA1 e47b162ad09076358375c6825dfe4600fa57c73b INSTALL
+SHA1 47870123f373f5185d6893cb98bf06a8a05510aa LICENSE
+SHA1 a61df9b05ac24074380caf8d5a4bb4d28eb73bd3 MANIFEST
+SHA1 86a5b4c2e4be2399a0809248ae1d5cf8d86f5512 META.json
+SHA1 0d2b721d8e36817a23dc0b5956426bf3a07c681e META.yml
+SHA1 63db2da6369481cdda4946280703eeeab470a635 Makefile.PL
+SHA1 1d74fc63b169bb17532f57d9203a7bf0d55a2c77 README
+SHA1 3c41bf80e6387202f609319ad426df760feb3cc8 dist.ini
+SHA1 f1f8b7e6a54120e7ed3e97384eb9ec8db5385957 doap.ttl
+SHA1 022673290381d5269e1709e557a29d548359f8b8 lib/Crypt/Polybius.pm
+SHA1 3379aa9f2c64c75c8035ab82a4b9170c6eba2d97 t/01basic.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iEYEARECAAYFAlN/yVcACgkQzr+BKGoqfTlPsgCgjTfk/7yzDn+FZTZpf44ajqrQ
+xe0An0w0wsPygciWJJA5TE9H5fwFqCdq
+=VHZm
+-----END PGP SIGNATURE-----
