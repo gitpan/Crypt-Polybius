@@ -24,6 +24,7 @@ my $meta = {
                                          "Const::Fast" => 0,
                                          "Moo" => "1.002000",
                                          "Moo::Role" => 0,
+                                         "MooX::Traits" => 0,
                                          "namespace::sweep" => 0,
                                          "perl" => 5.008,
                                          "Text::Unidecode" => 0,
@@ -35,12 +36,12 @@ my $meta = {
                         test      => { requires => { "Test::Modern" => 0.007 } },
                       },
   "provides"       => {
-                        "Crypt::Polybius"                 => { file => "lib/Crypt/Polybius.pm", version => 0.002 },
-                        "Crypt::Polybius::Greek"          => { file => "lib/Crypt/Polybius/Greek.pm", version => 0.002 },
-                        "Crypt::Role::CheckerboardCipher" => { file => "lib/Crypt/Role/CheckerboardCipher.pm", version => 0.002 },
-                        "Crypt::Role::GreekAlphabet"      => { file => "lib/Crypt/Role/GreekAlphabet.pm", version => 0.002 },
-                        "Crypt::Role::LatinAlphabet"      => { file => "lib/Crypt/Role/LatinAlphabet.pm", version => 0.002 },
-                        "Crypt::Role::ScrambledAlphabet"  => { file => "lib/Crypt/Role/ScrambledAlphabet.pm", version => 0.002 },
+                        "Crypt::Polybius"                 => { file => "lib/Crypt/Polybius.pm", version => 0.003 },
+                        "Crypt::Polybius::Greek"          => { file => "lib/Crypt/Polybius/Greek.pm", version => 0.003 },
+                        "Crypt::Role::CheckerboardCipher" => { file => "lib/Crypt/Role/CheckerboardCipher.pm", version => 0.003 },
+                        "Crypt::Role::GreekAlphabet"      => { file => "lib/Crypt/Role/GreekAlphabet.pm", version => 0.003 },
+                        "Crypt::Role::LatinAlphabet"      => { file => "lib/Crypt/Role/LatinAlphabet.pm", version => 0.003 },
+                        "Crypt::Role::ScrambledAlphabet"  => { file => "lib/Crypt/Role/ScrambledAlphabet.pm", version => 0.003 },
                       },
   "release_status" => "stable",
   "resources"      => {
@@ -56,7 +57,7 @@ my $meta = {
                                         },
                         X_identifier => "http://purl.org/NET/cpan-uri/dist/Crypt-Polybius/project",
                       },
-  "version"        => 0.002,
+  "version"        => 0.003,
 };
 
 my %dynamic_config;

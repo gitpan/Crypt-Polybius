@@ -25,26 +25,27 @@ optional_features: {}
 provides:
   Crypt::Polybius:
     file: lib/Crypt/Polybius.pm
-    version: 0.002
+    version: 0.003
   Crypt::Polybius::Greek:
     file: lib/Crypt/Polybius/Greek.pm
-    version: 0.002
+    version: 0.003
   Crypt::Role::CheckerboardCipher:
     file: lib/Crypt/Role/CheckerboardCipher.pm
-    version: 0.002
+    version: 0.003
   Crypt::Role::GreekAlphabet:
     file: lib/Crypt/Role/GreekAlphabet.pm
-    version: 0.002
+    version: 0.003
   Crypt::Role::LatinAlphabet:
     file: lib/Crypt/Role/LatinAlphabet.pm
-    version: 0.002
+    version: 0.003
   Crypt::Role::ScrambledAlphabet:
     file: lib/Crypt/Role/ScrambledAlphabet.pm
-    version: 0.002
+    version: 0.003
 requires:
   Const::Fast: 0
   Moo: 1.002000
   Moo::Role: 0
+  MooX::Traits: 0
   Text::Unidecode: 0
   Types::Common::Numeric: 0
   Types::Common::String: 0
@@ -57,4 +58,4 @@ resources:
   homepage: https://metacpan.org/release/Crypt-Polybius
   license: http://dev.perl.org/licenses/
   repository: git://github.com/tobyink/p5-crypt-polybius.git
-version: 0.002
+version: 0.003
