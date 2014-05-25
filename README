@@ -20,44 +20,74 @@ SYNOPSIS
        print $square->encipher('Attack at dawn.'), "\n";
 
 DESCRIPTION
-    This module provides an implementation of the Polybius square, or Polybius
-    checkerboard. This cipher is not cryptographically strong, nor completely
-    round-trip-safe.
+    This module provides an object-oriented implementation of the Polybius
+    square, or Polybius checkerboard. This cipher is not cryptographically
+    strong, nor completely round-trip-safe.
 
-  Constructor
+  Roles
+    This class performs the following roles:
+
+    *   Crypt::Role::LatinAlphabet
+
+    *   Crypt::Role::CheckerboardCipher
+
+    *   MooX::Traits
+
+  Constructors
     `new(%attributes)`
         Moose-like constructor.
 
+    `new_with_traits(%attributes, traits => \@traits)`
+        Alternative constructor provided by MooX::Traits.
+
   Attributes
+    The following attributes exist. All of them have defaults, and should not
+    be provided to the constructor.
+
     `square`
-        An array of arrays of letters. The default is:
+        An array of arrays of letters. Provided by
+        Crypt::Role::CheckerboardCipher.
 
-           [
-              [qw/ A B C D E /],
-              [qw/ F G H I K /],
-              [qw/ L M N O P /],
-              [qw/ Q R S T U /],
-              [qw/ V W X Y Z /],
-           ]
+    `square_size`
+        The length of one side of the square, as an integer. Provided by
+        Crypt::Role::CheckerboardCipher.
 
-    `substitutions`
-        A hashref of strings of pre-encipher substitutions to make. The
-        default is:
+    `encipher_hash`
+        Hashref used by the `encipher` method. Provided by
+        Crypt::Role::CheckerboardCipher.
 
-           { "J" => "I" }
+    `decipher_hash`
+        Hashref used by the `decipher` method. Provided by
+        Crypt::Role::CheckerboardCipher.
 
-        You should only use upper-case letters.
-
-  Methods
+  Object Methods
     `encipher($str)`
-        Enciphers a string and returns the ciphertext.
+        Enciphers a string and returns the ciphertext. Provided by
+        Crypt::Role::CheckerboardCipher.
 
     `decipher($str)`
-        Deciphers a string and returns the plaintext.
+        Deciphers a string and returns the plaintext. Provided by
+        Crypt::Role::CheckerboardCipher.
 
     `preprocess($str)`
         Perform pre-encipher processing on a string. `encipher` calls this, so
         you are unlikely to need to call it yourself.
+
+        The implementation provided by Crypt::Role::LatinAlphabet uppercases
+        any lower-case letters, and passes the string through Text::Unidecode.
+        It also replaces any letter J with I because the former is not found
+        in the alphabet provided by Crypt::Role::LatinAlphabet.
+
+    `alphabet`
+        Returns an arrayref of the known alphabet. Provided by
+        Crypt::Role::LatinAlphabet.
+
+  Class Method
+    `with_traits(@traits)`
+        Generates a new class based on this class, but adding traits.
+
+        Crypt::Role::ScrambledAlphabet is an example of an interesting trait
+        that works with this class.
 
 BUGS
     Please report any bugs to
@@ -65,6 +95,8 @@ BUGS
 
 SEE ALSO
     <http://en.wikipedia.org/wiki/Polybius_square>.
+
+    Crypt::Polybius::Greek.
 
 AUTHOR
     Toby Inkster <tobyink@cpan.org>.

@@ -4,7 +4,7 @@
 
 =head1 PURPOSE
 
-Test that Crypt::Polybius works.
+Test that Crypt::Polybius::Greek works.
 
 =head1 AUTHOR
 
@@ -19,14 +19,13 @@ the same terms as the Perl 5 programming language system itself.
 
 =cut
 
+use utf8;
 use Test::Modern;
-use Crypt::Polybius;
+use Crypt::Polybius::Greek;
 
-my $o = Crypt::Polybius->new;
+my $o = Crypt::Polybius::Greek->new;
 
-is($o->encipher('Bat!'), '12 11 44', 'encipher');
-is($o->decipher('12 11 44'), 'BAT', 'decipher');
-
-is($o->encipher("JIji\x{0130}\x{0131}"), '24 24 24 24 24 24', 'encipher - tricky bits');
+is($o->encipher('ρόπαλο'), '42 35 41 11 31 35', 'encipher');
+is($o->decipher('42 35 41 11 31 35'), 'ΡΟΠΑΛΟ', 'decipher');
 
 done_testing;

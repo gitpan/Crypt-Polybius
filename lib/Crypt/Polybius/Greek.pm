@@ -2,18 +2,19 @@ use 5.008;
 use strict;
 use warnings;
 
-package Crypt::Polybius;
+package Crypt::Polybius::Greek;
 
 our $AUTHORITY = 'cpan:TOBYINK';
 our $VERSION   = '0.002';
 
 use Moo;
+use Text::Unidecode;
 use namespace::sweep;
 
 with qw(
 	MooX::Traits
 	Crypt::Role::CheckerboardCipher
-	Crypt::Role::LatinAlphabet
+	Crypt::Role::GreekAlphabet
 );
 
 1;
@@ -26,32 +27,33 @@ __END__
 
 =head1 NAME
 
-Crypt::Polybius - implementation of the Polybius square
+Crypt::Polybius::Greek - implementation of the Polybius square using the Greek alphabet
 
 =head1 SYNOPSIS
 
+   use utf8;
    use Crypt::Polybius;
    
    #      1    2    3    4    5
-   # 1    A    B    C    D    E
-   # 2    F    G    H    I/J  K
-   # 3    L    M    N    O    P
-   # 4    Q    R    S    T    U
-   # 5    V    W    X    Y    Z
+   # 1    Α    Β    Γ    Δ    Ε
+   # 2    Ζ    Η    Θ    Ι    Κ
+   # 3    Λ    Μ    Ν    Ξ    Ο
+   # 4    Π    Ρ    Σ    Τ    Υ
+   # 5    Φ    Χ    Ψ    Ω
    #
-   # ATTACK  ->  11 44 44 11 13 25
-   # AT      ->  11 44
-   # DAWN    ->  14 11 52 33
+   # Άλφα  ->  11 31 51 11
    
-   my $square = Crypt::Polybius->new;
+   my $square = Crypt::Polybius::Greek->new;
    
-   print $square->encipher('Attack at dawn.'), "\n";
+   print $square->encipher("Άλφα"), "\n";
 
 =head1 DESCRIPTION
 
 This module provides an object-oriented implementation of the
-B<Polybius square>, or B<Polybius checkerboard>. This cipher is
-not cryptographically strong, nor completely round-trip-safe.
+B<Polybius square>, or B<Polybius checkerboard> using the
+Greek alphabet. This cipher is not cryptographically strong,
+nor completely round-trip-safe. And it requires you to write in
+Greek.
 
 =head2 Roles
 
@@ -61,7 +63,7 @@ This class performs the following roles:
 
 =item *
 
-L<Crypt::Role::LatinAlphabet>
+L<Crypt::Role::GreekAlphabet>
 
 =item *
 
@@ -135,15 +137,13 @@ L<Crypt::Role::CheckerboardCipher>.
 Perform pre-encipher processing on a string. C<encipher> calls this, so
 you are unlikely to need to call it yourself.
 
-The implementation provided by L<Crypt::Role::LatinAlphabet> uppercases
-any lower-case letters, and passes the string through Text::Unidecode.
-It also replaces any letter B<J> with B<I> because the former is not
-found in the alphabet provided by L<Crypt::Role::LatinAlphabet>.
+The implementation provided by L<Crypt::Role::GreekAlphabet> uppercases
+any lower-case letters, and handles most common Greek diacritics.
 
 =item C<< alphabet >>
 
 Returns an arrayref of the known alphabet. Provided by
-L<Crypt::Role::LatinAlphabet>.
+L<Crypt::Role::GreekAlphabet>.
 
 =back
 
@@ -169,7 +169,7 @@ L<http://rt.cpan.org/Dist/Display.html?Queue=Crypt-Polybius>.
 
 L<http://en.wikipedia.org/wiki/Polybius_square>.
 
-L<Crypt::Polybius::Greek>.
+L<Crypt::Polybius>.
 
 =head1 AUTHOR
 
